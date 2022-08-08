@@ -58,7 +58,7 @@ func (this *NowPayServer) NowPay() (string, error) {
 	m = make(map[string]interface{}, 0)
 	m["shopNo"] = shopNo
 	m["orderNo"] = code
-	m["money"] = 0.01
+	m["money"] = this.MhtOrderAmt
 
 	//算出md5加密签名
 	sign := PayLassSign(m, key)

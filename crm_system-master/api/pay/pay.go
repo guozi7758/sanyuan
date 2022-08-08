@@ -18,7 +18,7 @@ import (
 func OrderNowPay(c *gin.Context) {
 	fmt.Println(c.Query("text"))
 	var nopay lib.NowPayServer
-	money, _ := strconv.ParseInt(c.Query("money"), 10, 64)
+	money, _ := strconv.ParseInt(c.Query("price"), 10, 64)
 	if money <= 0 {
 		c.JSON(http.StatusOK, gin.H{"err": 3, "msg": "余额不能为小于0"})
 		return
