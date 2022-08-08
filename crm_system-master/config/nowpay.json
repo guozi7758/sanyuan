@@ -1,0 +1,9 @@
+{
+  "appId"         : "161614790852018",
+  "key"           : "y4TI9zAPRkisPkJDd6oz3MeTiSGSSCnO",
+  "tradeTimeOut"  :  3600,
+  "apiUrl"        : "https://pay.ipaynow.cn",
+  "notifyUrl"     : "http://testcrm.api.bjzybx.cn/login/nowpay_notify",
+  "timeZone"      : "Asia/Shanghai",
+  "schoolName"    : "中睿教育"
+}
