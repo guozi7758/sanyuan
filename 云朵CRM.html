@@ -1,0 +1,225 @@
+<html lang="zh-cmn-Hans">
+<head>
+	<meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="origin-when-cross-origin">
+	<title></title>
+<style>
+#loading-mask{
+position:fixed;
+left:0;
+top:0;
+height:100%;
+width:100%;
+background:#fff;
+user-select:none;
+z-index:9999;
+overflow:hidden;}
+.loading-wrapper{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-100%);
+}
+.loading-dot{
+animation:antRotate 2s infinite 0.1s;
+transform:rotate(45deg);
+position:relative;
+display:inline-block;
+font-size:64px;width:64px;
+height:64px;
+box-sizing:border-box;
+}.loading-dot i{
+width:22px;
+height:22px;
+position:absolute;
+display:block;
+background-color:#1890ff;
+border-radius:100%;
+transform:scale(.75);
+transform-origin:50% 50%;
+opacity:0.3;
+animation:antSpinMove 1s infinite linear 0.8s;
+}
+.loading-dot i:nth-child(1){
+
+top:0;
+left:0;
+}
+.loading-dot i:nth-child(2){
+top:0;
+right:0;
+-webkit-animation-delay:0.4s;
+animation-delay:0.4s;
+}
+.loading-dot i:nth-child(3){
+right:0;
+bottom:0;
+-webkit-animation-delay:0.8s;
+animation-delay:0.8s;
+}
+.loading-dot i:nth-child(4){
+bottom:0;
+left:0;
+-webkit-animation-delay:1.2s;
+animation-delay:1.2s;
+}
+@keyframes antRotate{
+to{
+-webkit-transform:rotate(405deg);
+transform:rotate(405deg);
+}
+}
+@-webkit-keyframes antRotate{
+to{
+-webkit-transform:rotate(405deg);
+transform:rotate(405deg);
+}}
+@keyframes antSpinMove{
+to{
+opacity:1;
+}
+}
+@-webkit-keyframes antSpinMove{
+to{
+opacity:1;
+}}
+</style>
+
+
+
+<link href="./CRM_files/chunk-vendors.6a77fb75.css" rel="stylesheet">
+<link href="./CRM_files/app.bea4f447.css" rel="stylesheet">
+<div data-v-54e2a5f9="" class="drawer-box">
+	<div data-v-f3d623ca="" data-v-0a22aaf6="" class="drawer" data-v-54e2a5f9="">
+		<div data-v-1bee3342="" data-v-f3d623ca="" class="order-details-head">
+			<div data-v-1bee3342="" class="order-details-head-title">客户支付信息</div>
+			<div data-v-1bee3342="" class="order-details-head-colse">
+				<span data-v-1bee3342="" class="iconfont close-icon"></span>
+			</div></div>
+			<div data-v-f3d623ca="" class="flex-other">
+				<div data-v-f3d623ca="" class="steps-head">
+			<!-- 		<div data-v-f3d623ca="" class="ant-steps ant-steps-horizontal ant-steps-label-horizontal">
+						<div data-v-f3d623ca="" class="ant-steps-item ant-steps-item-process ant-steps-item-active">
+							<div class="ant-steps-item-container">
+								<div class="ant-steps-item-tail">
+								</div>
+								<div class="ant-steps-item-icon">
+									<span class="ant-steps-icon">1</span>
+								</div>
+								<div class="ant-steps-item-content">
+									<div class="ant-steps-item-title">基本信息</div>
+								</div></div>
+							</div><div data-v-f3d623ca="" class="ant-steps-item ant-steps-item-wait">
+								<div class="ant-steps-item-container">
+									<div class="ant-steps-item-tail">
+									</div>
+									<div class="ant-steps-item-icon">
+										<span class="ant-steps-icon">2</span>
+									</div><div class="ant-steps-item-content">
+										<div class="ant-steps-item-title">课程信息</div>
+										</div></div>
+									</div><div data-v-f3d623ca="" class="ant-steps-item ant-steps-item-wait">
+										<div class="ant-steps-item-container">
+											<div class="ant-steps-item-tail"></div>
+											<div class="ant-steps-item-icon">
+												<span class="ant-steps-icon">3</span>
+											</div><div class="ant-steps-item-content">
+												<div class="ant-steps-item-title">支付信息</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+							<div data-v-f3d623ca="" class="section-after">
+							</div>
+							<div data-v-f3d623ca="" class="steps-content">
+								<div data-v-f3d623ca="" class="form">
+									<div data-v-f3d623ca="" class="form-title"> 客户基本信息 </div>
+									<form data-v-4432e26a="" data-v-f3d623ca="" class="ant-form ant-form-inline">
+										<div data-v-4432e26a=""  class="ant-row ant-form-item">
+											<div class="ant-col ant-form-item-label">
+												<label title="报名手机号" class="ant-form-item-required" >报名手机号</label>
+											</div>
+											<div class="ant-col ant-form-item-control-wrapper">
+												<div class="ant-form-item-control">
+													<span class="ant-form-item-children">
+														<input data-v-4432e26a="" name="phone" id = "phone" type="text" class="ant-input" required placeholder="请输入学员正确的手机号码"></span>
+														<!---->
+													</div>
+											</div>
+										</div>
+										<div data-v-4432e26a="" class="ant-row ant-form-item">
+													<div class="ant-col ant-form-item-label">
+														<label title="项目班型" class="ant-form-item-required">项目班型
+														</label>
+													</div>
+													<div class="ant-col ant-form-item-control-wrapper">
+														<div class="ant-form-item-control">
+															<span class="ant-form-item-children">
+																<input data-v-4432e26a="" name="class" type="text" class="ant-input" id = "class" required placeholder=法律职业资格考试/法律职业考试/全程领航班">
+															</span><!---->
+														</div>
+													</div>
+												</div>
+											<div data-v-4432e26a="" class="ant-row ant-form-item">
+											<div class="ant-col ant-form-item-label">
+												<label title="班型价格" class="ant-form-item-required">班型价格</label>
+											</div>
+											<div class="ant-col ant-form-item-control-wrapper">
+												<div class="ant-form-item-control">
+													<span class="ant-form-item-children">
+														<input data-v-4432e26a="" required name="price" type="text" class="ant-input" id = "price" placeholder="2000"></span>
+														<!---->
+													</div>
+											</div>
+										</div>
+										<div data-v-4432e26a="" class="ant-row ant-form-item">
+											<div class="ant-col ant-form-item-label">
+												<label title="请再次确认班型价格" class="ant-form-item-required">请再次确认班型价格</label>
+											</div>
+											<div class="ant-col ant-form-item-control-wrapper">
+												<div class="ant-form-item-control">
+													<span class="ant-form-item-children">
+														<input data-v-4432e26a="" required id="ck_price" type="text" class="ant-input" placeholder="2000"></span>
+														<!---->
+													</div>
+											</div>
+										</div>
+											
+										<button data-v-f3d623ca="" type="button" id="btn" class="ant-btn ant-btn-primary" ><span>点击生成支付码</span></button>
+										
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</head>
+				<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+				<script type="text/javascript">
+					$("#btn").click(function(){
+       					var phone =$("#phone").val();
+       					var class1 =$("#class").val();
+       					var price =$("#price").val();
+       					var ck_price =$("#ck_price").val();
+       					if(phone == ""){
+       						alert("请输入学员正确的手机号码");
+       						return;
+       					}
+       					if(class1 == ""){
+       						alert("请输入报名班型");
+       						return;
+       					}
+       					if(price == ""){
+       						alert("请输入价格");
+       						return;
+       					}
+       					if(ck_price != price){
+       						alert("两次价格不一样,请仔细确认");
+       						return;
+       					}
+       					window.location.href = "zhifu.html?phone="+phone+"&class="+class1+"&price="+price+"&ck_price="+ck_price+"";
+
+    				});
+				</script>
+				</html>

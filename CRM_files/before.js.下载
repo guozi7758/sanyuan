@@ -1,0 +1,82 @@
+console.log('进入了befor.js', location.href)
+let locationHref = location.href
+function AnLocal (key, val = '') {
+    let anLocal = JSON.parse(sessionStorage.getItem('anLocal') || '{}')
+    this.setItem = (key, val = '') => {
+        anLocal[key] = JSON.stringify(val)
+        sessionStorage.setItem('anLocal', JSON.stringify(anLocal))
+    }
+    this.getItem = (key) => {
+        let item = anLocal[key]
+        if (item) {
+            return JSON.parse(item)
+        } else {
+            return ''
+        }
+    }
+    this.removeItem = (key) => {
+        delete anLocal[key]
+        sessionStorage.setItem('anLocal', JSON.stringify(anLocal))
+    }
+    this.clear = (key) => {
+        sessionStorage.setItem('anLocal', JSON.stringify({}))
+    }
+}
+var anLocal = null
+window.anLocal = anLocal = new AnLocal()
+function getUrlParams (url = '', name) {
+    const queryParams = url.split('?')[1]
+    let finallyData = {}
+    var vars = queryParams ? queryParams.split('&') : []
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=')
+        finallyData[pair[0]] = pair[1]
+    }
+    if (name) {
+        return finallyData[name]
+    }
+    return finallyData
+}
+// 判断是否没有顶部导航和左侧导航
+function isNoRouter () {
+    let locationObj = getUrlParams(locationHref)
+    console.log('url参数是', locationObj)
+    if (locationObj.isIframe === 'yes') {
+        anLocal.setItem('isIframe', 'yes')
+        console.log('不应该展示导航')
+        let styleStr = `
+            #app .top-layout{ display:none; }
+            #app .sider-box{ display:none; }
+            #app #topTabs{ display:none; }
+            #app .fixtools{ display:none; }
+            #app .notice_box_box{ display:none; }
+            #app .right-content{ padding-left:0!important; }
+            #app .anTopRouters{ display:none; }
+        `
+        addStyle(styleStr, 'isIframe')
+    } else {
+        anLocal.removeItem('isIframe')
+        let isIframeEl = document.getElementsByClassName('isIframe')[0]
+        deleteEl(isIframeEl)
+        console.log('展示导航')
+    }
+}
+function deleteEl (el = null) {
+    el && el.parentNode && el.parentNode.removeChild(el)
+}
+function addStyle (styleStr = ';', className = '') {
+    var style = document.createElement('style')
+    style.className = className
+    style.appendChild(document.createTextNode(styleStr))
+    var head = document.getElementsByTagName('head')[0]
+    head.appendChild(style)
+}
+if (window.top !== window.self /* 在iframe中 */) {
+    isNoRouter()
+} else {
+    anLocal.removeItem('isIframe')
+    let isIframeEl = document.getElementsByClassName('isIframe')[0]
+    deleteEl(isIframeEl)
+}
+
+console.log('befor.js执行完毕')
