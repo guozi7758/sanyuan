@@ -1,10 +1,11 @@
 package router
 
 import (
+	"time"
+
 	"../api/pay"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"time"
 )
 
 var routs *gin.Engine

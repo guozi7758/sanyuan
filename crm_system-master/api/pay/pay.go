@@ -1,10 +1,12 @@
 package pay
 
 import (
-	"../../lib"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
+
+	"../../lib"
+	"github.com/gin-gonic/gin"
 )
 
 /*
@@ -16,10 +18,12 @@ import (
 func OrderNowPay(c *gin.Context) {
 	fmt.Println(c.Query("text"))
 	var nopay lib.NowPayServer
-	//if c.Query("order_id") == "" {
-	//	c.JSON(http.StatusOK, gin.H{"err": 3, "msg": "参数错误"})
-	//	return
-	//}
+	money, _ := strconv.ParseInt(c.Query("money"), 10, 64)
+	if money <= 0 {
+		c.JSON(http.StatusOK, gin.H{"err": 3, "msg": "余额不能为小于0"})
+		return
+	}
+	nopay.MhtOrderAmt = money
 	payUrl, err := nopay.NowPay()
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{"err": 1, "msg": err.Error()})
